@@ -1,5 +1,7 @@
 const { ApplicationCommandOptionType } = require("discord.js");
 
+const channelId = "1067597881814552670";
+
 module.exports = {
   name: "duyet",
   description: "Dán mã id-user (vd: 112233445566778899) để Duyệt cư dân",
@@ -66,7 +68,7 @@ module.exports = {
       if (!channel) return;
 
       await channel.send(
-        `Chúc mừng <@${targetUserId}> đã có visa của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây.`
+        `Chúc mừng <@${targetUserId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
       );
       await interaction.editReply(
         `Cư dân đã được duyệt bởi <@${interaction.user.id}>`

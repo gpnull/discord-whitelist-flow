@@ -9,6 +9,8 @@ const axios = require("axios");
 require("dotenv").config();
 const discordData = require("../../commands/moderations/mod-get-discord-data.js");
 
+const channelId = "1067597881814552670";
+
 module.exports = async (client) => {
   try {
     client.on("messageCreate", async (message) => {
@@ -166,7 +168,7 @@ module.exports = async (client) => {
             if (!channel) return;
 
             await channel.send(
-              `Chúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây.`
+              `Chúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
             );
             await interaction.editReply(
               `Cư dân đã được duyệt bởi <@${interaction.user.id}>`
