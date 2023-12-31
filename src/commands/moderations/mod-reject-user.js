@@ -57,7 +57,7 @@ module.exports = {
       if (!channel) return;
 
       await channel.send(
-        `<@${targetUserId}> chưa đạt yêu cầu.\nVui lòng điền lại form và chú ý hơn trong từng câu trả lời của bạn.`
+        `❌❌❌❌❌\n<@${targetUserId}> chưa đạt yêu cầu.\nVui lòng điền lại form và chú ý hơn trong từng câu trả lời của bạn.`
       );
       await interaction.editReply(
         `Cư dân đã bị từ chối bởi <@${interaction.user.id}>`

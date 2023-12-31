@@ -19,8 +19,11 @@ module.exports = async (client) => {
         message.content.includes("newRegistrationWhitelist")
       ) {
         const discordTag = message.content.slice(
-          message.content.indexOf("_") + 1
+          message.content.indexOf("_") + 1,
+          message.content.indexOf(":")
         );
+
+        const gender = message.content.slice(message.content.indexOf(":") + 1);
 
         let specifyUserDiscordData;
         const checkDiscordData = await discordData.callback(client);
@@ -132,6 +135,9 @@ module.exports = async (client) => {
               return;
             }
 
+            const roleFemale = interaction.guild.roles.cache.get(
+              process.env.FEMALE_ROLE_ID
+            );
             const roleWhitelist = interaction.guild.roles.cache.get(
               process.env.WHITELIST_ROLE_ID
             );
@@ -162,13 +168,19 @@ module.exports = async (client) => {
               .get(discordId)
               .roles.remove(roleNoWhitelist);
 
+            if (gender === "female") {
+              await interaction.guild.members.cache
+                .get(discordId)
+                .roles.add(roleFemale);
+            }
+
             const channel = await client.channels.cache.get(
               `${process.env.NOTIFY_USER_REGISTRATION_WHITELIST_CHANNEL}`
             );
             if (!channel) return;
 
             await channel.send(
-              `Chúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
+              `✅✅✅✅✅\nChúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
             );
             await interaction.editReply(
               `Cư dân đã được duyệt bởi <@${interaction.user.id}>`
@@ -232,7 +244,7 @@ module.exports = async (client) => {
             if (!channel) return;
 
             await channel.send(
-              `<@${discordId}> chưa đạt yêu cầu.\nVui lòng điền lại đơn đăng ký và chú ý hơn trong từng câu trả lời của bạn.`
+              `❌❌❌❌❌\n<@${discordId}> chưa đạt yêu cầu.\nVui lòng điền lại đơn đăng ký và chú ý hơn trong từng câu trả lời của bạn.`
             );
             await interaction.editReply(
               `Cư dân đã bị từ chối bởi <@${interaction.user.id}>`

@@ -68,7 +68,7 @@ module.exports = {
       if (!channel) return;
 
       await channel.send(
-        `Chúc mừng <@${targetUserId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
+        `✅✅✅✅✅\nChúc mừng <@${targetUserId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
       );
       await interaction.editReply(
         `Cư dân đã được duyệt bởi <@${interaction.user.id}>`
