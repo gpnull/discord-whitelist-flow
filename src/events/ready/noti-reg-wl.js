@@ -9,8 +9,6 @@ const axios = require("axios");
 require("dotenv").config();
 const discordData = require("../../commands/moderations/mod-get-discord-data.js");
 
-const channelId = "1067597881814552670";
-
 module.exports = async (client) => {
   try {
     client.on("messageCreate", async (message) => {
@@ -22,7 +20,6 @@ module.exports = async (client) => {
           message.content.indexOf("_") + 1,
           message.content.indexOf(":")
         );
-
         const gender = message.content.slice(message.content.indexOf(":") + 1);
 
         let specifyUserDiscordData;
@@ -43,8 +40,6 @@ module.exports = async (client) => {
         //   `${process.env.DISCORD_DATA_URI}/search?discordUserName=${discordTag}`
         // );
         // const discordId = discordDataGet.data[0].discordId;
-
-        ////
 
         let userDisplayAvatarURL;
         const userReg = await client.users.fetch(discordId).catch(() => null);
@@ -180,14 +175,11 @@ module.exports = async (client) => {
             if (!channel) return;
 
             await channel.send(
-              `✅✅✅✅✅\nChúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${channelId}> để được hướng dẫn vào thành phố.`
+              `✅✅✅✅✅\nChúc mừng <@${discordId}> đã trở thành công dân của Dreamland.\nChúc bạn có phút giây vui vẻ tại đây, vui lòng vào kênh <#${process.env.IP_LOGIN_CHANNEL}> để được hướng dẫn vào thành phố.`
             );
             await interaction.editReply(
               `Cư dân đã được duyệt bởi <@${interaction.user.id}>`
             );
-
-            // acceptWhitelistBtn.setDisabled(true);
-            // rejectWhitelistBtn.setDisabled(true);
 
             const acceptSuccessBtn = new ButtonBuilder()
               .setCustomId("acceptSuccessBtn")
@@ -250,9 +242,6 @@ module.exports = async (client) => {
               `Cư dân đã bị từ chối bởi <@${interaction.user.id}>`
             );
 
-            // acceptWhitelistBtn.setDisabled(true);
-            // rejectWhitelistBtn.setDisabled(true);
-
             const rejectSuccessBtn = new ButtonBuilder()
               .setCustomId("rejectSuccessBtn")
               .setLabel(`Cư dân bị từ chối bởi ${interaction.user.globalName}`)
@@ -279,13 +268,6 @@ module.exports = async (client) => {
             components: [row],
           });
         });
-
-        ////
-
-        // await message.reply({
-        //   embeds: [embed],
-        //   components: [row],
-        // });
 
         return;
       }

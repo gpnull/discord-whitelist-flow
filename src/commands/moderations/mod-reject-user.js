@@ -18,10 +18,11 @@ module.exports = {
 
       const targetUserId = interaction.options.get("id-user").value;
       const targetUser = await interaction.guild.members.fetch(targetUserId);
+
       if (!targetUser) {
-        await interaction.editReply("That user doesn't exist in this server.");
-        return;
+        return interaction.editReply("That user doesn't exist in this server.");
       }
+
       // if (targetUser.id === interaction.guild.ownerId) {
       //   await interaction.editReply(
       //     "You can't set role for user because they're the server owner."
@@ -35,14 +36,14 @@ module.exports = {
       const roleNoWhitelist = interaction.guild.roles.cache.get(
         process.env.NO_WHITELIST_ROLE_ID
       );
+
       if (!roleWhitelist) {
-        interaction.editReply({
-          content: "couldn't find that role",
-        });
-        return;
+        return interaction.editReply({ content: "Couldn't find that role." });
       }
 
-      // const hasRole = interaction.member.roles.cache.has(role.id);
+      const targetMember = interaction.guild.members.cache.get(targetUserId);
+
+      // const hasRole = targetMember.roles.cache.has(role.id);
       // if (hasRole) {
       //   await interaction.editReply({
       //     content: `<@${targetUserId}> đã có role whitelist rồi.`,
@@ -51,21 +52,28 @@ module.exports = {
       //   return;
       // }
 
-      const channel = await client.channels.cache.get(
-        `${process.env.NOTIFY_USER_REGISTRATION_WHITELIST_CHANNEL}`
-      );
-      if (!channel) return;
+      if (targetMember) {
+        await targetMember.roles.add(roleNoWhitelist);
+        await targetMember.roles.remove(roleWhitelist);
+      }
 
-      await channel.send(
-        `❌❌❌❌❌\n<@${targetUserId}> chưa đạt yêu cầu.\nVui lòng điền lại form và chú ý hơn trong từng câu trả lời của bạn.`
+      const channel = client.channels.cache.get(
+        process.env.NOTIFY_USER_REGISTRATION_WHITELIST_CHANNEL
       );
+
+      if (channel) {
+        await channel.send(
+          `❌❌❌❌❌\n<@${targetUserId}> chưa đạt yêu cầu.\nVui lòng điền lại form và chú ý hơn trong từng câu trả lời của bạn.`
+        );
+      }
+
       await interaction.editReply(
         `Cư dân đã bị từ chối bởi <@${interaction.user.id}>`
       );
 
       return;
     } catch (error) {
-      console.log(error);
+      console.error("tuchoi Command Error:", error);
     }
   },
 };
