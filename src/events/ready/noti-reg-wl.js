@@ -57,12 +57,12 @@ module.exports = async (client) => {
           .setColor("#CC99FF") // setColor("Random")
           .addFields(
             {
-              name: `\_\_Discord\_\_:`,
+              name: `\_\_Discord:\_\_`,
               value: `<@${discordId}>`,
               inline: true,
             },
             {
-              name: `\_\_Discord Tag\_\_:`,
+              name: `\_\_Discord Tag:\_\_`,
               value: `${discordTag}`,
               inline: true,
             },
@@ -75,11 +75,11 @@ module.exports = async (client) => {
             //   value: `\`\`\`${discordId}\`\`\``,
             // },
             // {
-            //   name: `✍️ \_\_Duyệt cư dân\_\_:`,
+            //   name: `✍️ \_\_Duyệt cư dân:\_\_`,
             //   value: `gõ **\`/duyet\`** và dán mã trên vào ô *\`id-user\`* rồi enter để duyệt cư dân`,
             // },
             // {
-            //   name: `✍️ \_\_Từ chối cư dân\_\_:`,
+            //   name: `✍️ \_\_Từ chối cư dân:\_\_`,
             //   value: `gõ **\`/tuchoi\`** và dán mã trên vào ô *\`id-user\`* rồi enter để từ chối cư dân`,
             // }
             {
