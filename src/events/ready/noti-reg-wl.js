@@ -120,7 +120,7 @@ module.exports = async (client) => {
 
         collector.on("collect", async (interaction) => {
           if (interaction.customId.includes("acceptWhitelistBtn")) {
-            await interaction.deferReply();
+            await interaction.deferReply({ ephemeral: true });
 
             const targetUser = await interaction.guild.members.fetch(discordId);
             if (!targetUser) {
@@ -201,7 +201,7 @@ module.exports = async (client) => {
             return;
           }
           if (interaction.customId.includes("rejectWhitelistBtn")) {
-            await interaction.deferReply();
+            await interaction.deferReply({ ephemeral: true });
 
             const targetUser = await interaction.guild.members.fetch(discordId);
             if (!targetUser) {
