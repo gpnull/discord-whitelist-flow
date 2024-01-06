@@ -40,19 +40,19 @@ module.exports = async (client) => {
             value:
               "Vui lòng đọc kỹ luật của Thành phố và luật của Discord, mọi thắc mắc về các bộ luật vui lòng liên hệ hỗ trợ để được giải đáp.",
           },
-          {
-            name: `📜 \_\_Luật discord:\_\_`,
-            value:
-              "https://discord.com/channels/1067597880833081404/1067597882326253600",
-            inline: true,
-          },
-          {
-            name: `📚 \_\_Luật thành phố:\_\_`,
-            value:
-              "https://discord.com/channels/1067597880833081404/1186165161074098196",
+          // {
+          //   name: `📜 \_\_Luật discord:\_\_`,
+          //   value:
+          //     "https://discord.com/channels/1067597880833081404/1067597882326253600",
+          //   inline: true,
+          // },
+          // {
+          //   name: `📚 \_\_Luật thành phố:\_\_`,
+          //   value:
+          //     "https://discord.com/channels/1067597880833081404/1186165161074098196",
 
-            inline: true,
-          },
+          //   inline: true,
+          // },
           {
             name: `\_\_Đăng ký nhập cư:\_\_`,
             value: `Vui lòng vào kênh <#${process.env.REGISTRATION_WHITELIST_CHANNEL}> để thực hiện đăng ký nhập cư.`,
@@ -63,7 +63,7 @@ module.exports = async (client) => {
           text: "DreamlandRP",
           iconURL: `${process.env.LOGO_LINK}`,
         })
-        .setImage(`${process.env.BANNER_SMALLER_LINK}`)
+        .setImage(`${process.env.BANNER_WELCOME_LINK}`)
         .setTimestamp();
 
       const channel = await client.channels.cache.get(
