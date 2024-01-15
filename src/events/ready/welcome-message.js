@@ -55,7 +55,7 @@ module.exports = async (client) => {
           // },
           {
             name: `\_\_Đăng ký nhập cư:\_\_`,
-            value: `Vui lòng vào kênh <#${process.env.REGISTRATION_WHITELIST_CHANNEL}> để thực hiện đăng ký nhập cư.`,
+            value: `**${member.user.globalName}** vui lòng vào kênh <#${process.env.REGISTRATION_WHITELIST_CHANNEL}> để thực hiện đăng ký nhập cư.`,
           }
         )
         .setThumbnail(`${userDisplayAvatarURL}`)
