@@ -32,7 +32,7 @@ module.exports = async (client) => {
         .setTimestamp();
 
       const channel = await client.channels.cache.get(
-        `${process.env.WELCOME_CHANNEL}`
+        `${process.env.LEAVE_CHANNEL}`
       );
       if (!channel) return;
 
