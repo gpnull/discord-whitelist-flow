@@ -8,12 +8,8 @@ module.exports = (client) => {
       type: ActivityType.Custom,
     },
     {
-      name: "Hope you enjoy!",
-      type: ActivityType.Custom,
-    },
-    {
-      name: "DreamLand Roleplay",
-      type: ActivityType.Custom,
+      name: "Roleplay",
+      type: ActivityType.Playing,
     },
   ];
 
