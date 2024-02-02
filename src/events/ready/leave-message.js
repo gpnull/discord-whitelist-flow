@@ -1,9 +1,5 @@
 const {
-  EmbedBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  ActionRowBuilder,
-  ComponentType,
+  EmbedBuilder
 } = require("discord.js");
 const axios = require("axios");
 require("dotenv").config();
