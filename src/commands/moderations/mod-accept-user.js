@@ -10,6 +10,12 @@ module.exports = {
       type: ApplicationCommandOptionType.String,
       required: true,
     },
+    {
+      name: "gender",
+      description: "Role giới tính (male hoặc female)",
+      type: ApplicationCommandOptionType.String,
+      required: true,
+    },
   ],
 
   callback: async (client, interaction) => {
@@ -57,6 +63,16 @@ module.exports = {
       if (targetMember) {
         await targetMember.roles.add(roleWhitelist);
         await targetMember.roles.remove(roleNoWhitelist);
+      }
+      const genderUser = interaction.options.get("gender").value;
+      if (genderUser === "female") {
+        const roleFemale = interaction.guild.roles.cache.get(
+          process.env.FEMALE_ROLE_ID
+        );
+
+        await interaction.guild.members.cache
+          .get(targetUserId)
+          .roles.add(roleFemale);
       }
 
       const notifyChannel = client.channels.cache.get(

@@ -1,6 +1,4 @@
-const {
-  EmbedBuilder
-} = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const axios = require("axios");
 require("dotenv").config();
 const discordData = require("../../commands/moderations/mod-get-discord-data.js");
@@ -8,7 +6,6 @@ const discordData = require("../../commands/moderations/mod-get-discord-data.js"
 module.exports = async (client) => {
   try {
     client.on("guildMemberRemove", async (member) => {
-
       const embed = new EmbedBuilder()
         .setAuthor({
           name: `DREAMLAND TẠM BIỆT`,
@@ -33,7 +30,6 @@ module.exports = async (client) => {
       if (!channel) return;
 
       await channel.send({ embeds: [embed] });
-
     });
   } catch (error) {
     console.log(`There was an error: ${error}`);

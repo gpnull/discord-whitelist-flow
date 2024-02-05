@@ -16,10 +16,14 @@ module.exports = async (client) => {
         // message.author.id === process.env.WEBHOOK_ID &&
         message.content.includes("newRegistrationWhitelist")
       ) {
-        const discordTag = message.content.slice(
+        let discordTag = message.content.slice(
           message.content.indexOf("_") + 1,
           message.content.indexOf(":")
         );
+        discordTag = discordTag.toLowerCase();
+        if (discordTag.includes("#")) {
+          discordTag = discordTag.replace("#", "");
+        }
         const gender = message.content.slice(message.content.indexOf(":") + 1);
 
         let specifyUserDiscordData;
