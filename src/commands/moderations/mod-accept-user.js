@@ -20,7 +20,7 @@ module.exports = {
 
   callback: async (client, interaction) => {
     try {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply();
 
       const targetUserId = interaction.options.get("id-user").value;
       const targetUser = await interaction.guild.members.fetch(targetUserId);
