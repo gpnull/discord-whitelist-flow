@@ -18,7 +18,7 @@ module.exports = {
       }
     };
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 10; i++) {
       const channelKey = `USER_DISCORD_DATA_${i}_CHANNEL`;
       const channelLimit = 100;
 
