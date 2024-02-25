@@ -86,7 +86,7 @@ module.exports = {
       }
 
       await interaction.editReply(
-        `Cư dân đã được duyệt bởi <@${interaction.user.id}>`
+        `Cư dân Id: \`${targetUserId}\` đã được duyệt bởi <@${interaction.user.id}>`
       );
 
       return;

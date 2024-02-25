@@ -68,7 +68,7 @@ module.exports = {
       }
 
       await interaction.editReply(
-        `Cư dân đã bị từ chối bởi <@${interaction.user.id}>`
+        `Cư dân Id: \`${targetUserId}\` đã bị từ chối bởi <@${interaction.user.id}>`
       );
 
       return;

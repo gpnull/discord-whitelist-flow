@@ -310,9 +310,9 @@ function removeVietnameseTones(str) {
   //   " "
   // );
 
-  // bản này dành cho những username có dấu _
+  // bản này dành cho những username có dấu _ .
   str = str.replace(
-    /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g,
+    /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|`|-|{|}|\||\\/g,
     " "
   );
   return str;
